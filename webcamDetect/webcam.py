@@ -1,11 +1,11 @@
 import cv2
 import imutils
+# -*- coding: utf-8 -*-
 
 #cargamos la plantilla e inicializamos la webcam:
 face_cascade = cv2.CascadeClassifier('./Cascades/haarcascade_frontalface_alt.xml')
-control_cascade = cv2.CascadeClassifier('./Cascades/Control-cascade-stage12.xml')
+control_cascade = cv2.CascadeClassifier('./Cascades/cascade_guante.xml')
 cap = cv2.VideoCapture(0)
- 
 while(True):
     #leemos un frame y lo guardamos
     ret, img = cap.read()
@@ -16,7 +16,7 @@ while(True):
     #buscamos las coordenadas de los rostros (si los hay) y
     #guardamos su posicion
     faces = face_cascade.detectMultiScale(gray, 1.2, 5)
-    control = control_cascade.detectMultiScale(gray,4,4)
+    control = control_cascade.detectMultiScale(gray,2,1)
     #Dibujamos un rectangulo en las coordenadas de cada rostro
     for (x,y,w,h) in faces:
         cv2.rectangle(img,(x,y),(x+w,y+h),(125,255,0),2)
