@@ -24,12 +24,6 @@ mixer.set_num_channels(1)
 # if the video argument is None, then we are reading from webcam
 if args.get("video", None) is None:
 	camera = cv2.VideoCapture(0)
-	time.sleep(0.25)
-
-# otherwise, we are reading from a video file
-else:
-	camera = cv2.VideoCapture(args["video"])
-
 # initialize the first frame in the video stream
 firstFrame = None
 
@@ -38,7 +32,7 @@ while True:
 	# grab the current frame and initialize the occupied/unoccupied
 	# text
 	(grabbed, frame) = camera.read()
-	text = "Unoccupied"
+	text = "Despejado"
 
 	# if the frame could not be grabbed, then we have reached the end
 	# of the video
@@ -82,11 +76,11 @@ while True:
 		# and update the text
 		(x, y, w, h) = cv2.boundingRect(c)
 		cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-		text = "Occupied"
+		text = "Intruso Detectado"
 
 	busy = mixer.music.get_busy()
 	#Si hay movimiento y el audio no se esta reproduciendo, triggereo la alarma
-	if text=="Occupied" and busy==0:
+	if text=="Intruso Detectado" and busy==0:
 		mixer.music.play()
 
 	# draw the text and timestamp on the frame

@@ -36,7 +36,7 @@ while True:
 	# grab the current frame and initialize the occupied/unoccupied
 	# text
 	(grabbed, frame) = camera.read()
-	text = "Unoccupied"
+	text = "Despejado"
 
 	# if the frame could not be grabbed, then we have reached the end
 	# of the video
@@ -77,11 +77,11 @@ while True:
 		# and update the text
 		(x, y, w, h) = cv2.boundingRect(c)
 		cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-		text = "Occupied"
+		text = "Intruso detectado"
 
 	busy = mixer.music.get_busy()
 	#Si hay movimiento y el audio no se esta reproduciendo, triggereo la alarma
-	if text=="Occupied" and busy==0:
+	if text=="Intruso detectado" and busy==0:
 		mixer.music.play()
 
 	# draw the text and timestamp on the frame
