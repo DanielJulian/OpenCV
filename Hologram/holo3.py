@@ -27,18 +27,11 @@ def start():
                         );
 
     while(True):
-        blank_image = np.zeros((768,1024,3), np.uint8)
         flag, frame = webcam.read()
         flag2, framevid = video.read()
         frame = cv2.flip(frame, 1)
         frame = cv2.resize(frame, (1024,768))
-
         orig_frame= frame.copy()
-
-        #Puntos de la imagen de de destino(camara web)
-
-
-
         frame = cv2.blur(frame,(3,3))
         hsv = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
         threshYellow = cv2.inRange(hsv,np.array((26, 80, 84)), np.array((40, 255, 255)))

@@ -14,7 +14,7 @@ while(cap.isOpened()):
     skin_ycrcb = cv2.inRange(im_ycrcb, skin_ycrcb_mint, skin_ycrcb_maxt)
     #cv2.imwrite(sys.argv[2], skin_ycrcb) # Second image
 
-    contours, _ = cv2.findContours(skin_ycrcb, cv2.RETR_EXTERNAL, 
+    _ , contours, _ = cv2.findContours(skin_ycrcb, cv2.RETR_EXTERNAL,
             cv2.CHAIN_APPROX_SIMPLE)
     for i, c in enumerate(contours):
         area = cv2.contourArea(c)

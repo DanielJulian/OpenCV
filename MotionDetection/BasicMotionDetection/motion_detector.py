@@ -81,8 +81,8 @@ while True:
 
 	busy = mixer.music.get_busy()
 	#Si hay movimiento y el audio no se esta reproduciendo, triggereo la alarma
-	if text=="Intruso detectado" and busy==0:
-		mixer.music.play()
+	#if text=="Intruso detectado" and busy==0:
+	#	mixer.music.play()
 
 	# draw the text and timestamp on the frame
 	cv2.putText(frame, "Room Status: {}".format(text), (10, 20),

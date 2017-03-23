@@ -9,7 +9,6 @@ cy=0
 prev_x = cx
 prev_y = cy
 draw_color = (255,0,0)
-color_radius = 40
 
 def set_image(lbl,img):
     img = Image.fromarray(img)
@@ -77,7 +76,6 @@ def start():
         orig_frame = cv2.cvtColor(orig_frame, cv2.COLOR_BGR2RGBA)
         final = cv2.add(orig_frame,blank_image)
         final = cv2.cvtColor(final, cv2.COLOR_RGBA2BGR)
-        img = Image.fromarray(final)
         cv2.imshow('thresh',thresh2)
         cv2.imshow('final',final)
 
